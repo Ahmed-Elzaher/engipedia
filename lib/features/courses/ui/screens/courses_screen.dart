@@ -12,16 +12,18 @@ class CoursesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.primary100, // اللون الموحد للخلفية
-      child: SafeArea(
+    return Scaffold(
+      extendBody: true, // 💡 التعديل الأول: يمتد تحت شريط التنقل
+      backgroundColor: AppColors.primary100, // 💡 التعديل الثاني: استخدام لونك المفضل للخلفية
+      body: SafeArea(
+        bottom: false, // 💡 التعديل الثالث: إلغاء الحماية السفلية عشان ينزل ورا البار
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
             // 1. الهيدر الموحد والثابت (Pinned)
             SliverPersistentHeader(
               pinned: true,
-              delegate: CommonAppHeader(), // 💡 استبدلنا الهيدر القديم بالموحد
+              delegate: CommonAppHeader(),
             ),
 
             // 2. قسم العناوين والبحث والمستويات
@@ -51,7 +53,7 @@ class CoursesScreen extends StatelessWidget {
 
             // 4. قائمة الكورسات الطولية
             SliverPadding(
-              padding: EdgeInsets.fromLTRB(24.w, 32.h, 24.w, 120.h),
+              padding: EdgeInsets.fromLTRB(24.w, 32.h, 24.w, 0), // شيلنا الـ 120 من هنا عشان حطيناها تحت خالص
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
                   const CourseVerticalCard(
@@ -75,6 +77,9 @@ class CoursesScreen extends StatelessWidget {
                 ]),
               ),
             ),
+
+            // 💡 التعديل الرابع: مسافة أسفل المحتوى لمنع اختفائه خلف الـ BottomNav العائم
+            SliverToBoxAdapter(child: SizedBox(height: 140.h)),
           ],
         ),
       ),

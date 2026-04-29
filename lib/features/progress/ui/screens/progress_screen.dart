@@ -15,9 +15,11 @@ class ProgressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.primary100,
-      child: SafeArea(
+    return Scaffold(
+      extendBody: true, // 💡 التعديل هنا: يمتد تحت شريط التنقل
+      backgroundColor: AppColors.primary100, // 💡 التعديل هنا: استخدام لونك المفضل للخلفية
+      body: SafeArea(
+        bottom: false, // 💡 التعديل هنا: إلغاء الـ SafeArea من الأسفل
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
@@ -130,6 +132,7 @@ class ProgressScreen extends StatelessWidget {
               sliver: SliverToBoxAdapter(child: _buildResumeCard()),
             ),
 
+            // 💡 التعديل الأخير: مسافة أسفل المحتوى لمنع اختفائه خلف الـ BottomNav العائم
             SliverToBoxAdapter(child: SizedBox(height: 140.h)),
           ],
         ),

@@ -1,8 +1,9 @@
-import 'package:engipedia/features/progress/ui/screens/progress_screen.dart';
+import 'package:engipedia/features/hub/ui/hub_screen.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
-// 💡 استيراد الشاشات من الفيتشرز بتاعتها
-import '../../../courses/ui/screens/courses_screen.dart'; 
+import '../../../../features/courses/ui/screens/courses_screen.dart';
+// TODO: مسار شاشة الـ AI (مؤقتاً هنحط مكانها Container عشان ما تضربش)
+import '../../../../features/progress/ui/screens/progress_screen.dart';
 import '../widgets/custom_bottom_nav.dart';
 
 class MainScreen extends StatefulWidget {
@@ -13,31 +14,35 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+  int _selectedIndex = 0;
 
-  // 💡 الشاشات مرتبة حسب ترتيب أيقونات الـ Bottom Nav
-  final List<Widget> _screens = [
-    const HomeScreen(),      // Index 0: Home
-    const CoursesScreen(),   // Index 1: Courses
-    const Center(child: Text("AI Screen - Coming Soon")), // Index 2: AI
-    const Center(child: Text("Hub Screen - Coming Soon")), // Index 3: Hub
-    const ProgressScreen(),  // Index 4: Progress (ركبت اهي يا وحش)
+  // 💡 الترتيب ده مطابق للـ BottomNav: 0=Home, 1=Courses, 2=AI, 3=Hub, 4=Progress
+// الترتيب هنا هو اللي بيتحكم إيه يفتح لما تدوس
+  final List<Widget> _pages = [
+    const HomeScreen(),      // الاندكس 0 -> هيفتح Home
+    const CoursesScreen(),   // الاندكس 1 -> هيفتح Courses
+    
+    // الاندكس 2 (زرار AI اللي في النص) -> حطيت لك صفحة فاضية مؤقتاً عشان متفتحش Hub
+    Container(color: const Color(0xFFE5E9FF), child: const Center(child: Text("AI Screen", style: TextStyle(fontSize: 24)))), 
+    
+    const HubScreen(),       // الاندكس 3 -> هيفتح Hub
+    const ProgressScreen(),  // الاندكس 4 -> هيفتح Progress
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBody ضروري عشان الـ Bottom Nav العائم يندمج مع خلفية الشاشات
-      extendBody: true, 
+      extendBody: true, // 💡 بتخلي المحتوى ينزل ورا البار في كل التطبيق
+      backgroundColor: const Color(0xFFE5E9FF), // نفس لون خلفية الـ Home
       body: IndexedStack(
-        index: _currentIndex,
-        children: _screens,
+        index: _selectedIndex,
+        children: _pages,
       ),
       bottomNavigationBar: CustomBottomNav(
-        currentIndex: _currentIndex,
+        currentIndex: _selectedIndex,
         onTabSelected: (index) {
           setState(() {
-            _currentIndex = index;
+            _selectedIndex = index;
           });
         },
       ),
