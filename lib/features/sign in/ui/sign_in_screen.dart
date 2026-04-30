@@ -20,44 +20,26 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   bool isPasswordHidden = true;
-
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  final TextEditingController emailController = TextEditingController();
-
-  final TextEditingController passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    emailController.dispose();
-
-    passwordController.dispose();
-
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary100, // اللون الموحد للبروجكت
+      backgroundColor: AppColors.primary100,
+      // إضافة الزرار هنا كـ FloatingActionButton لتسهيل الوصول إليه
+      floatingActionButton: _buildDeveloperShortcut(),
       body: SafeArea(
         child: BlocListener<SignInCubit, SignInState>(
           listenWhen: (previous, current) =>
               current is SignInSuccess || current is SignInError,
           listener: (context, state) {
             if (state is SignInSuccess) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(state.data.toString())));
-
-              // التعديل هنا: التوجيه للـ Home ومسح الشاشات السابقة من الذاكرة
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 Routes.homeScreen,
                 (route) => false,
               );
             }
-
             if (state is SignInError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -77,24 +59,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(height: 32.h),
                   _buildForm(),
                   SizedBox(height: 32.h),
-                  BlocBuilder<SignInCubit, SignInState>(
-                    builder: (context, state) {
-                      return AppTextButton(
-                        buttonText: state is SignInLoading
-                            ? "Loading..."
-                            : "Sign In",
-                        onPressed: state is SignInLoading
-                            ? () {}
-                            : () {
-                                if (formKey.currentState!.validate()) {
-                                  context
-                                      .read<SignInCubit>()
-                                      .emitSignInStates();
-                                }
-                              },
-                      );
-                    },
-                  ),
+                  _buildSignInButton(),
                   SizedBox(height: 24.h),
                   _buildDivider(),
                   SizedBox(height: 24.h),
@@ -107,6 +72,56 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  // ميثود الزرار السريع للمطورين
+  Widget _buildDeveloperShortcut() {
+    return GestureDetector(
+      onLongPress: () {
+        // حركة صايعة: خليه يشتغل بالضغط المطول عشان محدش يفتحه بالصدفة
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Routes.homeScreen,
+          (route) => false,
+        );
+      },
+      child: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            Routes.homeScreen,
+            (route) => false,
+          );
+        },
+        backgroundColor: Colors.red.withOpacity(0.7),
+        label: Text(
+          "For developer only",
+          style: AppStyles.captionRegularMontserrat.copyWith(
+            color: Colors.white,
+            fontSize: 10.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        icon: const Icon(Icons.developer_mode, color: Colors.white, size: 18),
+      ),
+    );
+  }
+
+  Widget _buildSignInButton() {
+    return BlocBuilder<SignInCubit, SignInState>(
+      builder: (context, state) {
+        return AppTextButton(
+          buttonText: state is SignInLoading ? "Loading..." : "Sign In",
+          onPressed: state is SignInLoading
+              ? () {}
+              : () {
+                  if (formKey.currentState!.validate()) {
+                    context.read<SignInCubit>().emitSignInStates();
+                  }
+                },
+        );
+      },
     );
   }
 
@@ -160,7 +175,7 @@ class _SignInScreenState extends State<SignInScreen> {
               return null;
             },
           ),
-          SizedBox(height: 16.h), // مسافة ثابتة، والأنيميشن هيحصل جوه الفيلد
+          SizedBox(height: 16.h),
           AppTextFormField(
             labelText: "Password",
             controller: context.read<SignInCubit>().passwordController,
@@ -194,8 +209,7 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           SizedBox(height: 12.h),
           GestureDetector(
-            onTap: () =>
-                Navigator.pushNamed(context, Routes.forgotPasswordScreen),
+            onTap: () => Navigator.pushNamed(context, Routes.forgotPasswordScreen),
             child: Text(
               "Forget Password",
               style: AppStyles.captionRegularMontserrat.copyWith(
