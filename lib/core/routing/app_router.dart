@@ -11,6 +11,8 @@ import '../../features/forgot_password/ui/forgot_password_screen.dart';
 import '../../features/check_email/ui/check_email_screen.dart';
 import '../../features/home/ui/screens/main_screen.dart'; 
 import '../../features/hub/ui/hub_screen.dart';
+// 💡 لازم تعمل Import للملف ده عشان نستخدم getIt
+import '../../core/di/dependency_injection.dart'; 
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -24,7 +26,8 @@ class AppRouter {
       case Routes.signInScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => SignInCubit(),
+            // ✅ التصليح هنا: بننادي على الكيوبيت من getIt عشان يبعت الـ Repo أوتوماتيك
+            create: (context) => getIt<SignInCubit>(), 
             child: const SignInScreen(),
           ),
         );
@@ -38,26 +41,27 @@ class AppRouter {
       case Routes.signUpScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => SignInCubit(), // TODO: Replace with SignUpCubit
+            // ✅ نفس الكلام هنا (مؤقتاً لحين عمل SignUpCubit)
+            create: (context) => getIt<SignInCubit>(), 
             child: const SignUpScreen(),
           ),
         );
       
-      // 💡 ده المدخل الرئيسي لقلب الأبلكيشن
       case Routes.homeScreen: 
         return MaterialPageRoute(builder: (_) => const MainScreen());
 
       case Routes.hubScreen:
         return MaterialPageRoute(builder: (_) => const HubScreen());
-case '/profile':
-  return MaterialPageRoute(builder: (_) => const ProfileScreen());
+
+      case '/profile':
+        return MaterialPageRoute(builder: (_) => const ProfileScreen());
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Center(child: Text('No route defined for ${settings.name}')),
           ),
         );
-        
     }
   }
 }

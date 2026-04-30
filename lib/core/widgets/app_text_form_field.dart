@@ -43,7 +43,7 @@ class AppTextFormField extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  ?labelRightWidget,
+                  if (labelRightWidget != null) labelRightWidget!,
                 ],
               ),
               SizedBox(height: 8.h),
@@ -52,7 +52,7 @@ class AppTextFormField extends StatelessWidget {
             // 2. البوكس بتاع الإدخال
             Container(
               width: double.infinity,
-              height: 36.h, 
+              height: 36.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.r),
                 boxShadow: const [
@@ -111,8 +111,10 @@ class AppTextFormField extends StatelessWidget {
                         controller: controller,
                         obscureText: isObscureText,
                         keyboardType: keyboardType,
-                        style: AppStyles.pMedium16.copyWith(color: Colors.black),
-                        textAlignVertical: TextAlignVertical.center, // 💡 توسيط النص داخلياً
+                        style:
+                            AppStyles.pMedium16.copyWith(color: Colors.black),
+                        textAlignVertical:
+                            TextAlignVertical.center, // 💡 توسيط النص داخلياً
                         onChanged: (value) {
                           state.didChange(value);
                         },
@@ -148,10 +150,9 @@ class AppTextFormField extends StatelessWidget {
                         child: Text(
                           state.errorText ?? '',
                           style: AppStyles.smallRegular10.copyWith(
-                            color: AppColors.error, 
-                            fontSize: 12.sp, 
-                            fontWeight: FontWeight.w500
-                           ),
+                              color: AppColors.error,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
               ),

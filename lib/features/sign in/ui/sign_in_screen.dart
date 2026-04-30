@@ -151,7 +151,7 @@ class _SignInScreenState extends State<SignInScreen> {
         children: [
           AppTextFormField(
             labelText: "Email",
-            controller: emailController,
+            controller: context.read<SignInCubit>().emailController,
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -163,7 +163,7 @@ class _SignInScreenState extends State<SignInScreen> {
           SizedBox(height: 16.h), // مسافة ثابتة، والأنيميشن هيحصل جوه الفيلد
           AppTextFormField(
             labelText: "Password",
-            controller: passwordController,
+            controller: context.read<SignInCubit>().passwordController,
             isObscureText: isPasswordHidden,
             validator: (value) {
               if (value == null || value.isEmpty) {

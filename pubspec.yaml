@@ -5,12 +5,18 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.11.3
+  sdk: '>=3.0.0 <4.0.0' # تم تعديل الـ SDK لضمان التوافق مع المكتبات المستقرة
 
 dependencies:
   flutter:
     sdk: flutter
+  
+  # Networking & API (إصدارات مثبتة لضمان التوافق)
+  dio: ^5.4.3
+  retrofit: 4.1.0 
+  json_annotation: ^4.9.0
 
+  # UI & Fonts
   cupertino_icons: ^1.0.8
   flutter_bloc: ^9.1.1
   flutter_svg: ^2.2.4
@@ -18,19 +24,25 @@ dependencies:
   google_fonts: ^8.0.2
   freezed_annotation: 2.4.4
   pinput: ^6.0.2
+  get_it: ^9.2.1
+  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
   flutter_launcher_icons: ^0.13.1
+  
+  # Generators (الإصدارات دي بالظبط هي اللي هتحل مشكلة الـ Parser والـ macros)
+  build_runner: 2.4.8
+  retrofit_generator: 8.1.0
+  json_serializable: 6.8.0
 
-# 💡 التعديل هنا لقراءة ملف الـ PNG الجديد
+# إعدادات الأيقونة
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/icon.png" # المسار الجديد للصورة الـ PNG
-  # شيلنا الـ adaptive حالياً لضمان إن الأيقونة تظهر فوراً بدون تعقيدات Decoder
+  image_path: "assets/images/icon.png"
 
 flutter:
   uses-material-design: true

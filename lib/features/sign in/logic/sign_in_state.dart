@@ -1,17 +1,21 @@
-abstract class SignInState<T> {
+abstract class SignInState {
   const SignInState();
 }
 
-class SignInInitial<T> extends SignInState<T> {}
-
-class SignInLoading<T> extends SignInState<T> {}
-
-class SignInSuccess<T> extends SignInState<T> {
-  final T data;
-  SignInSuccess(this.data);
+class SignInInitial extends SignInState {
+  const SignInInitial();
 }
 
-class SignInError<T> extends SignInState<T> {
+class SignInLoading extends SignInState {
+  const SignInLoading();
+}
+
+class SignInSuccess<T> extends SignInState {
+  final T data;
+  const SignInSuccess(this.data);
+}
+
+class SignInError extends SignInState {
   final String error;
-  SignInError({required this.error});
+  const SignInError({required this.error});
 }
