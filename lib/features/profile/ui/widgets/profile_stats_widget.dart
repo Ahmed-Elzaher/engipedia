@@ -14,19 +14,23 @@ class ProfileStatsWidget extends StatelessWidget {
         SizedBox(height: 16.h),
         _buildStatCard("8", "Courses Completed", Icons.school_outlined),
         SizedBox(height: 16.h),
-        _buildStatCard("120", "Contributions", Icons.star_border_rounded, suffix: "pts"),
+        _buildStatCard("120", "Contributions", Icons.star_border_rounded,
+            suffix: "pts"),
       ],
     );
   }
 
-  Widget _buildStatCard(String value, String label, IconData icon, {String? suffix}) {
+  Widget _buildStatCard(String value, String label, IconData icon,
+      {String? suffix}) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24.r),
         boxShadow: const [
-          BoxShadow(color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 4),
-          BoxShadow(color: Color(0x121F2687), offset: Offset(0, 8), blurRadius: 32),
+          BoxShadow(
+              color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 4),
+          BoxShadow(
+              color: Color(0x121F2687), offset: Offset(0, 8), blurRadius: 32),
         ],
       ),
       child: ClipRRect(
@@ -45,7 +49,8 @@ class ProfileStatsWidget extends StatelessWidget {
                   const Color(0xFFD6DAF5).withOpacity(0.8)
                 ],
               ),
-              border: Border.all(color: Colors.white.withOpacity(0.6), width: 1.5),
+              border:
+                  Border.all(color: Colors.white.withOpacity(0.6), width: 1.5),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +61,8 @@ class ProfileStatsWidget extends StatelessWidget {
                   children: [
                     Text(
                       value,
-                      style: AppStyles.h3Bold25.copyWith(color: const Color(0xFF0A0E29)),
+                      style: AppStyles.h3Bold25
+                          .copyWith(color: const Color(0xFF0A0E29)),
                     ),
                     if (suffix != null) ...[
                       SizedBox(width: 4.w),
@@ -77,7 +83,9 @@ class ProfileStatsWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(icon, color: const Color(0xFF141C52).withOpacity(0.7), size: 16.sp),
+                    Icon(icon,
+                        color: const Color(0xFF141C52).withOpacity(0.7),
+                        size: 16.sp),
                     SizedBox(width: 6.w),
                     Text(
                       label,

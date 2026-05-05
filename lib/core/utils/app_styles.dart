@@ -4,7 +4,7 @@ import 'app_colors.dart';
 
 abstract class AppStyles {
   // القاعدة العامة: Montserrat هو الخط الأساسي، واللون الافتراضي هو الـ Dark Blue (primary900)
-  
+
   static final TextStyle _baseMontserrat = TextStyle(
     fontFamily: 'Montserrat',
     color: AppColors.primary900, // اللون الافتراضي للنصوص
@@ -55,7 +55,7 @@ abstract class AppStyles {
 
   // ستايلات مخصصة (Montserrat)
   static TextStyle titleBoldMontserrat = _baseMontserrat.copyWith(
-    fontSize: 28.sp, 
+    fontSize: 28.sp,
     fontWeight: FontWeight.bold,
     height: 1.2, // أمان أكتر من 1.0 عشان الحروف متتقصش
   );
@@ -74,9 +74,9 @@ abstract class AppStyles {
     color: AppColors.white, // ده الوحيد اللي ثبتناه أبيض عشان الزراير
   );
   static TextStyle font13MediumItalicCaption = _baseMontserrat.copyWith(
-  fontSize: 13.sp,
-  fontWeight: FontWeight.w500,
-  fontStyle: FontStyle.italic,
-  color: AppColors.primary800,
-);
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w500,
+    fontStyle: FontStyle.italic,
+    color: AppColors.primary800,
+  );
 }

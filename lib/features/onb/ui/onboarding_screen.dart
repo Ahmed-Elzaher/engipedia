@@ -114,7 +114,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               textAlign: TextAlign.center,
               style: AppStyles.titleBoldMontserrat.copyWith(
                 color: AppColors.white, // أبيض عشان يظهر فوق الصورة
-                letterSpacing: index == 2 ? -1.2 : 0, 
+                letterSpacing: index == 2 ? -1.2 : 0,
               ),
             ),
           ),
@@ -139,7 +139,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 SizedBox(height: 32.h),
-                
+
                 // النص الصغير (Terms & Conditions)
                 SizedBox(
                   width: 345.w,
@@ -152,9 +152,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
                 ),
-                
+
                 SizedBox(height: 32.h),
-                
+
                 // زرار الانتقال
                 AppTextButton(
                   buttonText: buttonText,

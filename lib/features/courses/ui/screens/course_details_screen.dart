@@ -1,4 +1,7 @@
-import 'package:engipedia/core/widgets/common_app_header.dart'; // الهيدر الموحد بتاعك
+import 'package:engipedia/core/widgets/common_app_header.dart';
+import 'package:engipedia/core/widgets/scale_clickable.dart';
+import 'package:engipedia/features/home/ui/widgets/custom_bottom_nav.dart'
+    show CustomBottomNav;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
@@ -26,22 +29,29 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
   }
 
   Future<void> _initializePlayer() async {
-    _videoController = VideoPlayerController.asset('assets/videos/elmahaba.mp4');
-    await _videoController.initialize();
+    // 💡 تأكد إن المسار ده مطابق للي في الـ pubspec.yaml
+    _videoController =
+        VideoPlayerController.asset('assets/videos/videoplayback.mp4');
 
-    _chewieController = ChewieController(
-      videoPlayerController: _videoController,
-      autoPlay: false,
-      looping: false,
-      aspectRatio: 16 / 9,
-      materialProgressColors: ChewieProgressColors(
-        playedColor: AppColors.primary900,
-        handleColor: Colors.white,
-        backgroundColor: Colors.white24,
-        bufferedColor: Colors.white.withOpacity(0.2),
-      ),
-    );
-    setState(() {});
+    try {
+      await _videoController.initialize();
+      _chewieController = ChewieController(
+        videoPlayerController: _videoController,
+        autoPlay: false,
+        looping: false,
+        aspectRatio: 16 / 9,
+        materialProgressColors: ChewieProgressColors(
+          playedColor: AppColors.primary900,
+          handleColor: Colors.white,
+          backgroundColor: Colors.white24,
+          bufferedColor: Colors.white.withOpacity(0.2),
+        ),
+      );
+    } catch (e) {
+      debugPrint("Video Init Error: $e");
+    }
+
+    if (mounted) setState(() {});
   }
 
   @override
@@ -54,32 +64,60 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: const Color(0xFFD6DAF5),
+      bottomNavigationBar: CustomBottomNav(
+        currentIndex: 1,
+        onTabSelected: (index) {
+          if (index != 1) Navigator.pop(context, index);
+        },
+      ),
       body: SafeArea(
-        child: CustomScrollView( // استخدمنا CustomScrollView عشان الهيدر الموحد يشتغل صح
+        bottom: false,
+        child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            // 1. الهيدر الموحد والثابت (Pinned)
             SliverPersistentHeader(
               pinned: true,
-              delegate: CommonAppHeader(), // هنا استخدمنا الهيدر بتاعك
+              delegate: CommonAppHeader(),
             ),
-
-            // 2. محتوى الصفحة
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               sliver: SliverToBoxAdapter(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 24.h),
+                    Text(
+                      widget.courseTitle,
+                      style: AppStyles.h3Bold25.copyWith(
+                        color: AppColors.primary900,
+                        fontSize: 22.sp,
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                    SizedBox(height: 16.h),
+
                     _buildVideoPlayerCard(),
                     SizedBox(height: 24.h),
+
+                    // 💡 تم ضبط الـ Row هنا لضمان عدم ترحيل الزراير
                     _buildActionButtons(),
-                    SizedBox(height: 16.h),
-                    _buildTestButton(),
-                    SizedBox(height: 24.h),
+
+                    SizedBox(height: 12.h),
+
+                    _buildCustomButton(
+                      text: "Test Yourself",
+                      isFullWidth: true,
+                      onTap: () {},
+                    ),
+
+                    SizedBox(height: 32.h),
+
+                    // 💡 كارت الـ 10 دروس كاملة
                     _buildCourseCurriculum(),
-                    SizedBox(height: 40.h),
+
+                    SizedBox(height: 140.h),
                   ],
                 ),
               ),
@@ -97,54 +135,72 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
         color: Colors.black,
-        boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10, offset: const Offset(0, 4))],
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black26, blurRadius: 10, offset: const Offset(0, 4))
+        ],
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12.r),
-        child: _chewieController != null && _chewieController!.videoPlayerController.value.isInitialized
+        child: _chewieController != null &&
+                _chewieController!.videoPlayerController.value.isInitialized
             ? Chewie(controller: _chewieController!)
-            : const Center(child: CircularProgressIndicator(color: Colors.white)),
+            : const Center(
+                child: CircularProgressIndicator(color: Colors.white)),
       ),
     );
   }
 
   Widget _buildActionButtons() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center, // لضمان التوسط
       children: [
-        _buildSmallButton("Download Lecture"),
-        SizedBox(width: 16.w),
-        _buildSmallButton("Download Section"),
+        _buildCustomButton(text: "Download Lecture", onTap: () {}),
+        SizedBox(width: 8.w),
+        _buildCustomButton(text: "Download Section", onTap: () {}),
       ],
     );
   }
 
-  Widget _buildSmallButton(String text) {
-    return Expanded(
-      child: Container(
-        height: 40.h,
-        decoration: BoxDecoration(
-          color: const Color(0xFF0A0E29),
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        child: Center(
-          child: Text(text, style: AppStyles.smallRegular10.copyWith(color: Colors.white, fontSize: 12.sp)),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTestButton() {
-    return Container(
-      width: double.infinity,
-      height: 45.h,
+  Widget _buildCustomButton(
+      {required String text,
+      bool isFullWidth = false,
+      required VoidCallback onTap}) {
+    Widget buttonContent = Container(
+      height: 34.h,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
-        gradient: const LinearGradient(colors: [Color(0xFF1E2A7B), Color(0xFF0A0E29)]),
-        borderRadius: BorderRadius.circular(8.r),
+        gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xFF1E2A7B), Color(0xFF0A0E29)],
+        ),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12.r),
+          bottomRight: Radius.circular(12.r),
+        ),
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              offset: const Offset(0, 4),
+              blurRadius: 10),
+        ],
       ),
-      child: Center(
-        child: Text("Test Yourself", style: AppStyles.pMedium16.copyWith(color: Colors.white)),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontFamily: 'Montserrat',
+          fontSize: 13.sp,
+          fontWeight: FontWeight.w400,
+          color: const Color(0xFFEAEDFA),
+        ),
       ),
     );
+
+    Widget finalButton = ScaleClickable(onTap: onTap, child: buttonContent);
+
+    return isFullWidth ? finalButton : Expanded(child: finalButton);
   }
 
   Widget _buildCourseCurriculum() {
@@ -153,51 +209,84 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
       {"title": "Lec 2: Database Models Overview", "time": "42 Min"},
       {"title": "Lec 3: ER Diagrams and Design", "time": "34 Min"},
       {"title": "Lec 4: Relational Model Basics", "time": "50 Min"},
+      {"title": "Lec 5: SQL Basics", "time": "48 Min"},
+      {"title": "Lec 6: Advanced SQL Queries", "time": "56 Min"},
+      {"title": "Lec 7: Database Normalization", "time": "52 Min"},
+      {"title": "Lec 8: Indexing and Optimization", "time": "56 Min"},
+      {"title": "Lec 9: Transactions & Concurrency", "time": "44 Min"},
+      {"title": "Lec 10: Database Security & Backup", "time": "35 Min"},
     ];
 
     return Container(
-      padding: EdgeInsets.all(20.w),
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.9),
+        gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xFFFAFAFA), Color(0xFFD6DAF5)],
+        ),
         borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 15)],
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.15),
+              offset: const Offset(0, 4),
+              blurRadius: 15),
+        ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            height: 40.h,
+            height: 34.h,
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
             decoration: BoxDecoration(
-              gradient: const LinearGradient(colors: [Color(0xFF5B6CD7), Color(0xFF141C52)]),
-              borderRadius: BorderRadius.circular(20.r),
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFF5B6CD7), Color(0xFF141C52)],
+              ),
+              borderRadius: BorderRadius.circular(16.r),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(child: Text("Search", style: TextStyle(color: Colors.white70, fontSize: 14.sp))),
-                const Icon(Icons.search, color: Colors.white70),
+                Text("Search",
+                    style: TextStyle(
+                        color: const Color(0xFFEAEDFA),
+                        fontSize: 16.sp,
+                        fontFamily: 'Montserrat')),
+                Icon(Icons.search, color: const Color(0xFFEAEDFA), size: 18.w),
               ],
             ),
           ),
           SizedBox(height: 24.h),
           ListView.separated(
             shrinkWrap: true,
+            padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: lessons.length,
-            separatorBuilder: (context, index) => SizedBox(height: 16.h),
+            separatorBuilder: (context, index) => SizedBox(height: 20.h),
             itemBuilder: (context, index) {
-              return Row(
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.play_circle_fill, color: const Color(0xFF1349EC), size: 40.w),
-                  SizedBox(width: 12.w),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(lessons[index]["title"]!, style: AppStyles.pMedium16, maxLines: 1, overflow: TextOverflow.ellipsis),
-                        Text(lessons[index]["time"]!, style: AppStyles.captionRegularMontserrat),
-                      ],
-                    ),
+                  Text(
+                    lessons[index]["title"]!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16.sp,
+                        color: const Color(0xFF0A0E29)),
+                  ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    lessons[index]["time"]!,
+                    style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontSize: 12.sp,
+                        color: const Color(0xFF0A0E29).withOpacity(0.7)),
                   ),
                 ],
               );

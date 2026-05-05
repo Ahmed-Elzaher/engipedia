@@ -29,11 +29,15 @@ class YouMightKnowWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("You might know", style: AppStyles.h4Bold20.copyWith(color: const Color(0xFF0A0E29))),
+          Text("You might know",
+              style:
+                  AppStyles.h4Bold20.copyWith(color: const Color(0xFF0A0E29))),
           SizedBox(height: 20.h),
-          _buildPersonRow("Ahmed Hassan", "Electrical Eng.", "assets/images/onb2.png"), // استخدمت صور من المشروع
+          _buildPersonRow("Ahmed Hassan", "Electrical Eng.",
+              "assets/images/onb2.png"), // استخدمت صور من المشروع
           SizedBox(height: 16.h),
-          _buildPersonRow("Laila Omar", "Software Engineer", "assets/images/onb3.png"),
+          _buildPersonRow(
+              "Laila Omar", "Software Engineer", "assets/images/onb3.png"),
         ],
       ),
     );
@@ -52,7 +56,9 @@ class YouMightKnowWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(name, style: AppStyles.pMedium16.copyWith(fontSize: 15.sp, color: const Color(0xFF0A0E29))),
+              Text(name,
+                  style: AppStyles.pMedium16.copyWith(
+                      fontSize: 15.sp, color: const Color(0xFF0A0E29))),
               Text(
                 major,
                 style: AppStyles.smallRegular10.copyWith(

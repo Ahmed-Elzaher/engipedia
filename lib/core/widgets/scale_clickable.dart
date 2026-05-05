@@ -26,7 +26,7 @@ class _ScaleClickableState extends State<ScaleClickable> {
     return GestureDetector(
       // 💡 ده أهم سطر عشان يخلي أي مساحة فاضية جوه الكارت قابلة للضغط
       behavior: HitTestBehavior.opaque,
-      
+
       onTapDown: (_) {
         if (widget.onTap != null) setState(() => _isPressed = true);
       },
@@ -37,7 +37,7 @@ class _ScaleClickableState extends State<ScaleClickable> {
         if (widget.onTap != null) setState(() => _isPressed = false);
       },
       onTap: widget.onTap,
-      
+
       child: AnimatedScale(
         scale: _isPressed ? widget.scaleFactor : 1.0,
         duration: widget.duration,

@@ -23,7 +23,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   // Password Visibility States
   bool isPasswordHidden = true;
@@ -82,10 +83,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               height: 1.2, // line-height: 30px on 25px font
                             ),
                           ),
-                          
+
                           // Gap: 16px
-                          SizedBox(height: 16.h), 
-                          
+                          SizedBox(height: 16.h),
+
                           Text(
                             "Sign up to access courses, track your progress, and stay updated throughout the semester.",
                             textAlign: TextAlign.center,
@@ -95,10 +96,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               letterSpacing: 0.5.w,
                             ),
                           ),
-                          
+
                           // Gap: 16px
                           SizedBox(height: 16.h),
-                          
+
                           // Already have an account? Sign In
                           RichText(
                             textAlign: TextAlign.center,
@@ -117,7 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     height: 1.5,
                                     letterSpacing: 0.5.w,
                                     decoration: TextDecoration.underline,
-                                    fontWeight: FontWeight.w600, 
+                                    fontWeight: FontWeight.w600,
                                   ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
@@ -136,32 +137,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 46.h),
 
                   // 3. حقول الإدخال
-                  
+
                   _buildInputBlock(
                     label: "First Name",
                     controller: firstNameController,
-                    validator: (value) => value!.isEmpty ? 'Enter your first name' : null,
-                  ),
-                  
-                  SizedBox(height: 24.h),
-                  
-                  _buildInputBlock(
-                    label: "Last Name",
-                    controller: lastNameController,
-                    validator: (value) => value!.isEmpty ? 'Enter your last name' : null,
+                    validator: (value) =>
+                        value!.isEmpty ? 'Enter your first name' : null,
                   ),
 
                   SizedBox(height: 24.h),
-                  
+
+                  _buildInputBlock(
+                    label: "Last Name",
+                    controller: lastNameController,
+                    validator: (value) =>
+                        value!.isEmpty ? 'Enter your last name' : null,
+                  ),
+
+                  SizedBox(height: 24.h),
+
                   _buildInputBlock(
                     label: "Email",
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                    validator: (value) => value!.isEmpty ? 'Enter your email' : null,
+                    validator: (value) =>
+                        value!.isEmpty ? 'Enter your email' : null,
                   ),
 
                   SizedBox(height: 24.h),
-                  
+
                   _buildInputBlock(
                     label: "Password",
                     controller: passwordController,
@@ -172,7 +176,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         isPasswordHidden = !isPasswordHidden;
                       });
                     },
-                    validator: (value) => value!.isEmpty ? 'Enter your password' : null,
+                    validator: (value) =>
+                        value!.isEmpty ? 'Enter your password' : null,
                   ),
 
                   SizedBox(height: 16.h),
@@ -194,7 +199,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                     validator: (value) {
                       if (value!.isEmpty) return 'Confirm your password';
-                      if (value != passwordController.text) return 'Passwords do not match';
+                      if (value != passwordController.text)
+                        return 'Passwords do not match';
                       return null;
                     },
                   ),
@@ -216,7 +222,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   // 5. الفاصل (Or Continue with)
                   Row(
                     children: [
-                      const Expanded(child: Divider(color: AppColors.primary900, thickness: 1)),
+                      const Expanded(
+                          child: Divider(
+                              color: AppColors.primary900, thickness: 1)),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 12.w),
                         child: Text(
@@ -227,7 +235,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                       ),
-                      const Expanded(child: Divider(color: Color(0xFF0A0E29), thickness: 1)),
+                      const Expanded(
+                          child:
+                              Divider(color: Color(0xFF0A0E29), thickness: 1)),
                     ],
                   ),
 
@@ -250,7 +260,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: () {},
                   ),
 
-                  SizedBox(height: 40.h), 
+                  SizedBox(height: 40.h),
                 ],
               ),
             ),
@@ -272,7 +282,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     TextInputType? keyboardType,
   }) {
     return SizedBox(
-      width: 345.w, 
+      width: 345.w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -311,9 +321,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
             ],
           ),
-          
           SizedBox(height: 8.h),
-          
           AppTextFormField(
             labelText: "",
             controller: controller,
@@ -355,7 +363,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           SizedBox(width: 8.w),
           Text(
             text,
-            style: AppStyles.captionRegularItalic13.copyWith(color: AppColors.primary800),
+            style: AppStyles.captionRegularItalic13
+                .copyWith(color: AppColors.primary800),
           ),
         ],
       ),

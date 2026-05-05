@@ -48,9 +48,9 @@ class _SocialLoginButtonState extends State<SocialLoginButton> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: _isPressed 
-                  ? [const Color(0xFF5B6CD7), const Color(0xFF141C52)]
-                  : [const Color(0xFF1E2A7B), const Color(0xFF0A0E29)],
+                colors: _isPressed
+                    ? [const Color(0xFF5B6CD7), const Color(0xFF141C52)]
+                    : [const Color(0xFF1E2A7B), const Color(0xFF0A0E29)],
               ),
               boxShadow: [
                 BoxShadow(

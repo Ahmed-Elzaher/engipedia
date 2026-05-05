@@ -30,16 +30,22 @@ class CustomBottomNavBar extends StatelessWidget {
           children: [
             _buildNavItem(icon: Icons.home_filled, index: 0, context: context),
             _buildNavItem(icon: Icons.search, index: 1, context: context),
-            _buildNavItem(icon: Icons.bookmark_border, index: 2, context: context),
-            _buildNavItem(icon: Icons.notifications_none, index: 3, context: context),
-            _buildNavItem(icon: Icons.person_outline, index: 4, context: context),
+            _buildNavItem(
+                icon: Icons.bookmark_border, index: 2, context: context),
+            _buildNavItem(
+                icon: Icons.notifications_none, index: 3, context: context),
+            _buildNavItem(
+                icon: Icons.person_outline, index: 4, context: context),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildNavItem({required IconData icon, required int index, required BuildContext context}) {
+  Widget _buildNavItem(
+      {required IconData icon,
+      required int index,
+      required BuildContext context}) {
     final bool isActive = currentIndex == index;
     return GestureDetector(
       onTap: () => onTap(index),
@@ -63,7 +69,11 @@ class CustomBottomNavBar extends StatelessWidget {
                   ),
                 ),
               ),
-            Icon(icon, size: 28.sp, color: isActive ? AppColors.accentBlue : Colors.white.withOpacity(0.7)),
+            Icon(icon,
+                size: 28.sp,
+                color: isActive
+                    ? AppColors.accentBlue
+                    : Colors.white.withOpacity(0.7)),
           ],
         ),
       ),

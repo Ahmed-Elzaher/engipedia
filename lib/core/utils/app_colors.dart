@@ -28,6 +28,5 @@ abstract class AppColors {
   static const Color black = Color(0xFF000000);
 
   static const Color successGreen = Color(0xFF10B981);
-static const Color progressBg = Color(0xFFEDF2F7);
-  
+  static const Color progressBg = Color(0xFFEDF2F7);
 }

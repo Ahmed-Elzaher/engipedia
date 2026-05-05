@@ -23,7 +23,8 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -41,14 +42,16 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
       ),
       alignment: Alignment.center,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center, // محاذاة مركزية لكل العناصر
+        crossAxisAlignment:
+            CrossAxisAlignment.center, // محاذاة مركزية لكل العناصر
         children: [
           Expanded(
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const ProfileScreen()),
                 );
               },
               behavior: HitTestBehavior.opaque,
@@ -59,12 +62,12 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
                     width: 40.w,
                     height: 40.w,
                     decoration: const BoxDecoration(
-                      color: Color(0xFFADB5EB), 
+                      color: Color(0xFFADB5EB),
                       shape: BoxShape.circle,
                     ),
                     child: Center(
                       child: Text(
-                        getInitials(userName), 
+                        getInitials(userName),
                         style: AppStyles.pMedium16.copyWith(
                           color: const Color(0xFF141C52),
                           fontWeight: FontWeight.bold,
@@ -80,7 +83,7 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          userName, 
+                          userName,
                           style: AppStyles.pMedium16.copyWith(
                             color: const Color(0xFF0A0E29),
                             fontWeight: FontWeight.bold,
@@ -136,7 +139,10 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
   }
 
   // 🛠️ دالة مساعدة لضمان التمركز المطلق للأيقونات
-  Widget _buildIconWrapper({required IconData icon, required double size, required VoidCallback onTap}) {
+  Widget _buildIconWrapper(
+      {required IconData icon,
+      required double size,
+      required VoidCallback onTap}) {
     return ScaleClickable(
       onTap: onTap,
       child: Container(
@@ -155,7 +161,8 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
   double get maxExtent => 82.h;
   @override
   double get minExtent => 82.h;
-  
+
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => true;
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+      true;
 }

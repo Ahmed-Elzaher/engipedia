@@ -17,10 +17,22 @@ class CoursesSearchField extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.r),
           boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
-            BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
-            BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
-            BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
+            BoxShadow(
+                color: Colors.black.withOpacity(0.25),
+                offset: const Offset(0, 4),
+                blurRadius: 4),
+            BoxShadow(
+                color: Colors.black.withOpacity(0.25),
+                offset: const Offset(0, 4),
+                blurRadius: 4),
+            BoxShadow(
+                color: Colors.black.withOpacity(0.25),
+                offset: const Offset(0, 4),
+                blurRadius: 4),
+            BoxShadow(
+                color: Colors.black.withOpacity(0.25),
+                offset: const Offset(0, 4),
+                blurRadius: 4),
           ],
         ),
         child: ClipRRect(

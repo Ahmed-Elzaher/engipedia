@@ -3,7 +3,7 @@ class ApiConstants {
   static const String apiBaseUrl = "https://jsonplaceholder.typicode.com/";
 
   // المسارات الخاصة بكل عملية
-  static const String login = "posts"; 
+  static const String login = "posts";
   static const String signUp = "users";
 }
 

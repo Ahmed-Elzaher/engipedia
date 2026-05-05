@@ -30,10 +30,22 @@ class CourseVerticalCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
-            BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
-            BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
-            BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
+            BoxShadow(
+                color: Colors.black.withOpacity(0.25),
+                offset: const Offset(0, 4),
+                blurRadius: 4),
+            BoxShadow(
+                color: Colors.black.withOpacity(0.25),
+                offset: const Offset(0, 4),
+                blurRadius: 4),
+            BoxShadow(
+                color: Colors.black.withOpacity(0.25),
+                offset: const Offset(0, 4),
+                blurRadius: 4),
+            BoxShadow(
+                color: Colors.black.withOpacity(0.25),
+                offset: const Offset(0, 4),
+                blurRadius: 4),
           ],
         ),
         child: ClipRRect(
@@ -56,25 +68,44 @@ class CourseVerticalCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(title, style: AppStyles.pMedium16.copyWith(color: const Color(0xFF0A0E29), fontWeight: FontWeight.w600)),
+                      Text(title,
+                          style: AppStyles.pMedium16.copyWith(
+                              color: const Color(0xFF0A0E29),
+                              fontWeight: FontWeight.w600)),
                       SizedBox(height: 8.h),
-                      Text(doctor, style: AppStyles.pMedium16.copyWith(color: const Color(0xFF0A0E29), fontSize: 14.sp)),
+                      Text(doctor,
+                          style: AppStyles.pMedium16.copyWith(
+                              color: const Color(0xFF0A0E29), fontSize: 14.sp)),
                       SizedBox(height: 8.h),
-                      Text("level $level", style: AppStyles.pMedium16.copyWith(color: const Color(0xFF0A0E29), fontSize: 13.sp)),
+                      Text("level $level",
+                          style: AppStyles.pMedium16.copyWith(
+                              color: const Color(0xFF0A0E29), fontSize: 13.sp)),
                       SizedBox(height: 4.h),
-                      Text(lectures, style: AppStyles.pMedium16.copyWith(color: const Color(0xFF0A0E29), fontSize: 13.sp)),
+                      Text(lectures,
+                          style: AppStyles.pMedium16.copyWith(
+                              color: const Color(0xFF0A0E29), fontSize: 13.sp)),
                     ],
                   ),
                   Container(
                     width: double.infinity,
                     height: 34.h,
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xFF1E2A7B), Color(0xFF0A0E29)]),
+                      gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xFF1E2A7B), Color(0xFF0A0E29)]),
                       borderRadius: BorderRadius.circular(16.r),
-                      boxShadow: const [BoxShadow(color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 20)],
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Color(0x40000000),
+                            offset: Offset(0, 4),
+                            blurRadius: 20)
+                      ],
                     ),
                     child: Center(
-                      child: Text("continue", style: AppStyles.pMedium16.copyWith(color: const Color(0xFFEAEDFA), fontSize: 14.sp)),
+                      child: Text("continue",
+                          style: AppStyles.pMedium16.copyWith(
+                              color: const Color(0xFFEAEDFA), fontSize: 14.sp)),
                     ),
                   ),
                 ],

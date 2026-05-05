@@ -14,10 +14,10 @@ class CoursesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true, 
-      backgroundColor: AppColors.primary100, 
+      extendBody: true,
+      backgroundColor: AppColors.primary100,
       body: SafeArea(
-        bottom: false, 
+        bottom: false,
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
@@ -54,7 +54,7 @@ class CoursesScreen extends StatelessWidget {
 
             // 4. قائمة الكورسات الطولية
             SliverPadding(
-              padding: EdgeInsets.fromLTRB(24.w, 32.h, 24.w, 0), 
+              padding: EdgeInsets.fromLTRB(24.w, 32.h, 24.w, 0),
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
                   CourseVerticalCard(
@@ -115,7 +115,8 @@ class CoursesScreen extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Icon(Icons.school_outlined, color: Color(0xFF1349EC), size: 24),
+            const Icon(Icons.school_outlined,
+                color: Color(0xFF1349EC), size: 24),
             SizedBox(width: 12.w),
             Text(
               "Academic Excellence",
@@ -233,7 +234,10 @@ class CoursesScreen extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16.r),
           boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 10, offset: const Offset(0, 4)),
+            BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 10,
+                offset: const Offset(0, 4)),
           ],
         ),
         child: Row(
@@ -277,7 +281,10 @@ class _LevelButton extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(16.r),
             boxShadow: [
-              BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.25),
+                  offset: const Offset(0, 4),
+                  blurRadius: 4),
             ],
           ),
           child: Center(

@@ -29,13 +29,14 @@ class _CourseItemCardState extends State<CourseItemCard> {
           duration: const Duration(milliseconds: 150),
           curve: Curves.easeInOut,
           child: Container(
-            width: 163.w, 
-            margin: EdgeInsets.only(right: 16.w, bottom: 20.h), // مساحة للشادو براحته
+            width: 163.w,
+            margin: EdgeInsets.only(
+                right: 16.w, bottom: 20.h), // مساحة للشادو براحته
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.r),
               boxShadow: const [
                 BoxShadow(
-                  color: Color(0x40000000), 
+                  color: Color(0x40000000),
                   offset: Offset(0, 4),
                   blurRadius: 4,
                 ),
@@ -44,9 +45,10 @@ class _CourseItemCardState extends State<CourseItemCard> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16.r),
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4), 
+                filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       begin: Alignment.topCenter,
@@ -57,7 +59,7 @@ class _CourseItemCardState extends State<CourseItemCard> {
                       ],
                     ),
                     border: Border.all(
-                      color: const Color(0xFFEAEDFA), 
+                      color: const Color(0xFFEAEDFA),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(16.r),
@@ -74,14 +76,15 @@ class _CourseItemCardState extends State<CourseItemCard> {
                           width: 139.w,
                           height: 105.h,
                           fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) => Container(
+                          errorBuilder: (context, error, stackTrace) =>
+                              Container(
                             width: 139.w,
                             height: 105.h,
                             color: AppColors.primary400,
                           ),
                         ),
                       ),
-                      
+
                       SizedBox(height: 16.h), // 💡 مسافة الفيجما
 
                       // 2. شريط التقدم
@@ -94,15 +97,15 @@ class _CourseItemCardState extends State<CourseItemCard> {
                         ),
                         alignment: Alignment.centerLeft,
                         child: Container(
-                          width: 90.w, 
+                          width: 90.w,
                           height: 12.h,
                           decoration: BoxDecoration(
-                            color: const Color(0xFF10B981), 
+                            color: const Color(0xFF10B981),
                             borderRadius: BorderRadius.circular(64.r),
                           ),
                         ),
                       ),
-                      
+
                       SizedBox(height: 12.h), // 💡 مسافة الفيجما
 
                       // 3. اسم المادة ووصفها
@@ -121,7 +124,9 @@ class _CourseItemCardState extends State<CourseItemCard> {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            SizedBox(height: 12.h), // 💡 مسافة الفيجما بين العنوان والوصف
+                            SizedBox(
+                                height: 12
+                                    .h), // 💡 مسافة الفيجما بين العنوان والوصف
                             Text(
                               "Hardware & software control systems",
                               style: AppStyles.pMedium16.copyWith(
@@ -136,7 +141,8 @@ class _CourseItemCardState extends State<CourseItemCard> {
                         ),
                       ),
 
-                      SizedBox(height: 12.h), // 💡 مسافة الفيجما بين الوصف والدكتور
+                      SizedBox(
+                          height: 12.h), // 💡 مسافة الفيجما بين الوصف والدكتور
 
                       // 4. الدكتور
                       SizedBox(
@@ -147,7 +153,8 @@ class _CourseItemCardState extends State<CourseItemCard> {
                           children: [
                             CircleAvatar(
                               radius: 12.r,
-                              backgroundImage: const AssetImage('assets/images/pfp.jpg'),
+                              backgroundImage:
+                                  const AssetImage('assets/images/pfp.jpg'),
                               backgroundColor: AppColors.primary400,
                             ),
                             SizedBox(width: 8.w),
@@ -166,8 +173,9 @@ class _CourseItemCardState extends State<CourseItemCard> {
                           ],
                         ),
                       ),
-                      
-                      SizedBox(height: 8.h), // 💡 مسافة الفيجما بين الدكتور والزرار
+
+                      SizedBox(
+                          height: 8.h), // 💡 مسافة الفيجما بين الدكتور والزرار
 
                       // 5. زرار Continue
                       Container(
@@ -179,20 +187,20 @@ class _CourseItemCardState extends State<CourseItemCard> {
                             end: Alignment.bottomCenter,
                             colors: [
                               Color(0xFF1E2A7B),
-                              Color(0xFF0A0E29), 
+                              Color(0xFF0A0E29),
                             ],
                           ),
                           borderRadius: BorderRadius.circular(16.r),
                           boxShadow: const [
                             BoxShadow(
-                              color: Color(0x40000000), 
+                              color: Color(0x40000000),
                               offset: Offset(0, 4),
                               blurRadius: 20,
                             ),
                           ],
                         ),
                         child: Material(
-                          color: Colors.transparent, 
+                          color: Colors.transparent,
                           child: InkWell(
                             borderRadius: BorderRadius.circular(16.r),
                             onTap: () {},

@@ -19,7 +19,8 @@ Future<void> setupGetIt() async {
 
   // 3. SignIn Repo
   // بنسجل الـ Repo وبنخليه ياخد نسخة الـ ApiService الجاهزة من getIt
-  getIt.registerLazySingleton<SignInRepo>(() => SignInRepo(getIt<ApiService>()));
+  getIt
+      .registerLazySingleton<SignInRepo>(() => SignInRepo(getIt<ApiService>()));
 
   // 4. SignIn Cubit
   // بنستخدم registerFactory هنا عشان كل ما نفتح صفحة الـ Sign In يعمل Cubit جديد ويمسحه لما نقفلها

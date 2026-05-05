@@ -16,7 +16,8 @@ class ProgressStatsCard extends StatelessWidget {
     required this.value,
     required this.statusText,
     this.icon,
-    this.iconColor, required String subTitle,
+    this.iconColor,
+    required String subTitle,
   });
 
   @override
@@ -27,8 +28,14 @@ class ProgressStatsCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
-          BoxShadow(color: const Color(0x121F2687), offset: const Offset(0, 8), blurRadius: 32),
+          BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              offset: const Offset(0, 4),
+              blurRadius: 4),
+          BoxShadow(
+              color: const Color(0x121F2687),
+              offset: const Offset(0, 8),
+              blurRadius: 32),
         ],
       ),
       child: ClipRRect(
@@ -51,13 +58,22 @@ class ProgressStatsCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(title, style: AppStyles.h4Bold20.copyWith(fontSize: 18.sp, color: const Color(0xFF0A0E29))),
+                    Text(title,
+                        style: AppStyles.h4Bold20.copyWith(
+                            fontSize: 18.sp, color: const Color(0xFF0A0E29))),
                     SizedBox(height: 8.h),
                     Row(
                       children: [
-                        Text(value, style: AppStyles.h4Bold20.copyWith(fontSize: 22.sp, color: const Color(0xFF0A0E29))),
+                        Text(value,
+                            style: AppStyles.h4Bold20.copyWith(
+                                fontSize: 22.sp,
+                                color: const Color(0xFF0A0E29))),
                         SizedBox(width: 12.w),
-                        Text(statusText, style: const TextStyle(fontFamily: 'Space Grotesk', fontWeight: FontWeight.bold, color: Color(0xFF2839A4))),
+                        Text(statusText,
+                            style: const TextStyle(
+                                fontFamily: 'Space Grotesk',
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF2839A4))),
                       ],
                     ),
                   ],

@@ -13,9 +13,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.primary100, 
+      color: AppColors.primary100,
       child: SafeArea(
-        bottom: false, 
+        bottom: false,
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
             // 3. قائمة الكورسات العرضية
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 370.h, 
+                height: 370.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 24.w),
@@ -70,12 +70,12 @@ class HomeScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: Column(
                   children: [
-                    SizedBox(height: 40.h), 
+                    SizedBox(height: 40.h),
                     _buildAboutSection(),
                     SizedBox(height: 40.h),
                     _buildFeaturesSection(),
                     // 💡 مسافة الأمان عشان الـ Nav Bar العائم
-                    SizedBox(height: 140.h), 
+                    SizedBox(height: 140.h),
                   ],
                 ),
               ),
@@ -99,19 +99,22 @@ class HomeScreen extends StatelessWidget {
         SizedBox(height: 8.h),
         Text(
           "Empowering future engineers through structured learning and a unified platform.",
-          style: AppStyles.pMedium16.copyWith(fontSize: 13.sp, color: const Color(0xFF0A0E29)),
+          style: AppStyles.pMedium16
+              .copyWith(fontSize: 13.sp, color: const Color(0xFF0A0E29)),
           textAlign: TextAlign.center,
         ),
         SizedBox(height: 24.h),
         const InfoGlassCard(
           title: "Our Mission",
-          description: "To provide an accessible platform for engineering resources and student growth in a fast-evolving tech world.",
+          description:
+              "To provide an accessible platform for engineering resources and student growth in a fast-evolving tech world.",
           icon: Icons.rocket_launch_rounded,
           radius: 24.0,
         ),
         const InfoGlassCard(
           title: "Our Vision",
-          description: "To become a global standard for student-led technical education, building a community of innovators solving real-world problems.",
+          description:
+              "To become a global standard for student-led technical education, building a community of innovators solving real-world problems.",
           icon: Icons.visibility_rounded,
           radius: 24.0,
         ),
@@ -126,38 +129,44 @@ class HomeScreen extends StatelessWidget {
         SizedBox(height: 8.h),
         Text(
           "Explore the main tools and features designed to enhance your learning experience.",
-          style: AppStyles.pMedium16.copyWith(fontSize: 13.sp, color: const Color(0xFF0A0E29)),
+          style: AppStyles.pMedium16
+              .copyWith(fontSize: 13.sp, color: const Color(0xFF0A0E29)),
           textAlign: TextAlign.center,
         ),
         SizedBox(height: 24.h),
         const InfoGlassCard(
           title: "Structured Courses",
-          description: "Organized curriculum paths tailored for specific engineering majors.",
+          description:
+              "Organized curriculum paths tailored for specific engineering majors.",
           icon: Icons.account_tree_rounded,
           radius: 16.0,
         ),
         const InfoGlassCard(
           title: "Progress Tracking",
-          description: "Visualize your learning journey with detailed performance metrics.",
+          description:
+              "Visualize your learning journey with detailed performance metrics.",
           icon: Icons.insert_chart_rounded,
           radius: 16.0,
         ),
         const InfoGlassCard(
           title: "Community Support",
-          description: "Connect with peers and mentors to solve complex problems together.",
+          description:
+              "Connect with peers and mentors to solve complex problems together.",
           icon: Icons.groups_rounded,
           radius: 16.0,
         ),
         const InfoGlassCard(
           title: "Resource Library",
-          description: "Access a vast collection of textbooks and research papers.",
-          icon: Icons.library_books_rounded, 
+          description:
+              "Access a vast collection of textbooks and research papers.",
+          icon: Icons.library_books_rounded,
           radius: 16.0,
         ),
         const InfoGlassCard(
           title: "Mock Exams",
-          description: "Prepare for finals with real-time simulations and question banks.",
-          icon: Icons.quiz_rounded, 
+          description:
+              "Prepare for finals with real-time simulations and question banks.",
+          icon: Icons.quiz_rounded,
           radius: 16.0,
         ),
       ],

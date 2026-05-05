@@ -19,14 +19,17 @@ class _MainScreenState extends State<MainScreen> {
   // 💡 الترتيب ده مطابق للـ BottomNav: 0=Home, 1=Courses, 2=AI, 3=Hub, 4=Progress
 // الترتيب هنا هو اللي بيتحكم إيه يفتح لما تدوس
   final List<Widget> _pages = [
-    const HomeScreen(),      // الاندكس 0 -> هيفتح Home
-    const CoursesScreen(),   // الاندكس 1 -> هيفتح Courses
-    
+    const HomeScreen(), // الاندكس 0 -> هيفتح Home
+    const CoursesScreen(), // الاندكس 1 -> هيفتح Courses
+
     // الاندكس 2 (زرار AI اللي في النص) -> حطيت لك صفحة فاضية مؤقتاً عشان متفتحش Hub
-    Container(color: const Color(0xFFE5E9FF), child: const Center(child: Text("AI Screen", style: TextStyle(fontSize: 24)))), 
-    
-    const HubScreen(),       // الاندكس 3 -> هيفتح Hub
-    const ProgressScreen(),  // الاندكس 4 -> هيفتح Progress
+    Container(
+        color: const Color(0xFFE5E9FF),
+        child: const Center(
+            child: Text("AI Screen", style: TextStyle(fontSize: 24)))),
+
+    const HubScreen(), // الاندكس 3 -> هيفتح Hub
+    const ProgressScreen(), // الاندكس 4 -> هيفتح Progress
   ];
 
   @override

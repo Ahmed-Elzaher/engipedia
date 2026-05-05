@@ -5,7 +5,7 @@ import '../../../core/widgets/common_app_header.dart';
 import '../../../core/widgets/scale_clickable.dart';
 
 // 💡 استدعاء الـ Widgets المنفصلة
-import 'widgets/post_card_widget.dart'; 
+import 'widgets/post_card_widget.dart';
 import 'widgets/trending_card_widget.dart';
 import 'widgets/study_groups_card_widget.dart';
 
@@ -15,10 +15,10 @@ class HubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true, 
-      backgroundColor: const Color(0xFFE5E9FF), 
+      extendBody: true,
+      backgroundColor: const Color(0xFFE5E9FF),
       body: SafeArea(
-        bottom: false, 
+        bottom: false,
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
@@ -35,11 +35,13 @@ class HubScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Recent Activity", style: AppStyles.h3Bold25.copyWith(color: const Color(0xFF141C52))),
+                    Text("Recent Activity",
+                        style: AppStyles.h3Bold25
+                            .copyWith(color: const Color(0xFF141C52))),
                     SizedBox(height: 16.h),
                     _buildFilterButtons(),
                     SizedBox(height: 24.h),
-                    _buildShareUpdateCard(), 
+                    _buildShareUpdateCard(),
                   ],
                 ),
               ),
@@ -54,7 +56,7 @@ class HubScreen extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 24.h),
                     child: const PostCardWidget(),
                   ),
-                  childCount: 4, 
+                  childCount: 4,
                 ),
               ),
             ),
@@ -98,7 +100,8 @@ class HubScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFilterButton({required String title, required List<Color> gradientColors}) {
+  Widget _buildFilterButton(
+      {required String title, required List<Color> gradientColors}) {
     return Expanded(
       child: ScaleClickable(
         onTap: () {},
@@ -166,7 +169,7 @@ class HubScreen extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 24.r,
-                backgroundImage: const AssetImage('assets/images/pfp.png'), 
+                backgroundImage: const AssetImage('assets/images/pfp.png'),
                 backgroundColor: Colors.grey.shade300,
               ),
               SizedBox(width: 16.w),
@@ -216,7 +219,7 @@ class HubScreen extends StatelessWidget {
               ScaleClickable(
                 onTap: () {},
                 child: Container(
-                  width: 100.w, 
+                  width: 100.w,
                   height: 36.h,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(

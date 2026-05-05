@@ -18,8 +18,12 @@ class PostCardWidget extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(8.r),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 4), blurRadius: 4),
-          const BoxShadow(color: Color(0x111F2687), offset: Offset(0, 8), blurRadius: 32),
+          BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              offset: const Offset(0, 4),
+              blurRadius: 4),
+          const BoxShadow(
+              color: Color(0x111F2687), offset: Offset(0, 8), blurRadius: 32),
         ],
       ),
       child: Column(
@@ -38,7 +42,8 @@ class PostCardWidget extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: CircleAvatar(
-                  backgroundImage: const AssetImage('assets/images/pfp.png'), // غير المسار لو مختلف
+                  backgroundImage: const AssetImage(
+                      'assets/images/pfp.png'), // غير المسار لو مختلف
                   backgroundColor: Colors.grey.shade300,
                 ),
               ),
@@ -49,7 +54,9 @@ class PostCardWidget extends StatelessWidget {
                   children: [
                     Text(
                       "Dr. Hala Bahi El-Din",
-                      style: AppStyles.pMedium16.copyWith(color: const Color(0xFF0A0E29), fontWeight: FontWeight.bold),
+                      style: AppStyles.pMedium16.copyWith(
+                          color: const Color(0xFF0A0E29),
+                          fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 8.h),
                     Text(
@@ -64,10 +71,11 @@ class PostCardWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(Icons.more_horiz, color: const Color(0xFF0A0E29).withOpacity(0.4)),
+              Icon(Icons.more_horiz,
+                  color: const Color(0xFF0A0E29).withOpacity(0.4)),
             ],
           ),
-          
+
           SizedBox(height: 24.h),
 
           // 2. Post Content
@@ -90,11 +98,15 @@ class PostCardWidget extends StatelessWidget {
               color: const Color(0xFFEAEDFA),
               borderRadius: BorderRadius.circular(16.r),
               image: const DecorationImage(
-                image: AssetImage('assets/images/course_cover.png'), // مسار الصورة المرفقة
+                image: AssetImage(
+                    'assets/images/course_cover.png'), // مسار الصورة المرفقة
                 fit: BoxFit.cover,
               ),
               boxShadow: [
-                BoxShadow(color: Colors.black.withOpacity(0.1), offset: const Offset(0, 4), blurRadius: 6),
+                BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    offset: const Offset(0, 4),
+                    blurRadius: 6),
               ],
             ),
           ),

@@ -14,9 +14,15 @@ class ProfileHeaderWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24.r),
         boxShadow: const [
-          BoxShadow(color: Color(0x40000000), offset: Offset(0, 25), blurRadius: 50, spreadRadius: -12),
-          BoxShadow(color: Color(0x121F2687), offset: Offset(0, 8), blurRadius: 32),
-          BoxShadow(color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 4),
+          BoxShadow(
+              color: Color(0x40000000),
+              offset: Offset(0, 25),
+              blurRadius: 50,
+              spreadRadius: -12),
+          BoxShadow(
+              color: Color(0x121F2687), offset: Offset(0, 8), blurRadius: 32),
+          BoxShadow(
+              color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 4),
         ],
       ),
       child: ClipRRect(
@@ -40,7 +46,10 @@ class ProfileHeaderWidget extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [const Color(0xFFFAFAFA).withOpacity(0.8), const Color(0xFFD6DAF5).withOpacity(0.8)],
+                  colors: [
+                    const Color(0xFFFAFAFA).withOpacity(0.8),
+                    const Color(0xFFD6DAF5).withOpacity(0.8)
+                  ],
                 ),
               ),
               child: Column(
@@ -54,13 +63,16 @@ class ProfileHeaderWidget extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Zeyad Khaled Mohamed", style: AppStyles.h4Bold20, overflow: TextOverflow.ellipsis),
+                            Text("Zeyad Khaled Mohamed",
+                                style: AppStyles.h4Bold20,
+                                overflow: TextOverflow.ellipsis),
                             SizedBox(height: 4.h),
                             Text("CCE Student", style: AppStyles.pMedium16),
                             SizedBox(height: 12.h),
                             Text(
                               "Passionate about Computer Engineering and Hardware Design.",
-                              style: AppStyles.smallRegular10.copyWith(fontSize: 13.sp, fontStyle: FontStyle.italic),
+                              style: AppStyles.smallRegular10.copyWith(
+                                  fontSize: 13.sp, fontStyle: FontStyle.italic),
                             ),
                             SizedBox(height: 12.h),
                             // 💡 الـ Wrap هنا هو اللي بيمنع الـ Overflow يميناً
@@ -68,8 +80,10 @@ class ProfileHeaderWidget extends StatelessWidget {
                               spacing: 12.w,
                               runSpacing: 8.h,
                               children: [
-                                _buildInfoItem(Icons.location_on_outlined, "CAIRO, EGYPT"),
-                                _buildInfoItem(Icons.link_rounded, "ENGIPEDIA.IO/ZEYAD"),
+                                _buildInfoItem(
+                                    Icons.location_on_outlined, "CAIRO, EGYPT"),
+                                _buildInfoItem(
+                                    Icons.link_rounded, "ENGIPEDIA.IO/ZEYAD"),
                               ],
                             ),
                           ],
@@ -93,7 +107,8 @@ class ProfileHeaderWidget extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 30.r,
-          backgroundImage: const AssetImage('assets/images/onb1.png'), // استخدمت صورة من مشروعك
+          backgroundImage: const AssetImage(
+              'assets/images/onb1.png'), // استخدمت صورة من مشروعك
           backgroundColor: const Color(0xFFEAEDFA),
         ),
         Positioned(
@@ -102,7 +117,10 @@ class ProfileHeaderWidget extends StatelessWidget {
           child: Container(
             width: 14.w,
             height: 14.w,
-            decoration: BoxDecoration(color: Colors.green, shape: BoxShape.circle, border: Border.all(color: Colors.white, width: 2)),
+            decoration: BoxDecoration(
+                color: Colors.green,
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.white, width: 2)),
           ),
         ),
       ],
@@ -118,7 +136,10 @@ class ProfileHeaderWidget extends StatelessWidget {
         Flexible(
           child: Text(
             text,
-            style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, fontSize: 10.sp),
+            style: TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+                fontSize: 10.sp),
             overflow: TextOverflow.ellipsis,
           ),
         ),
@@ -133,10 +154,13 @@ class ProfileHeaderWidget extends StatelessWidget {
         height: 44.h,
         width: double.infinity,
         decoration: BoxDecoration(
-          gradient: const LinearGradient(colors: [Color(0xFF1E2A7B), Color(0xFF0A0E29)]),
+          gradient: const LinearGradient(
+              colors: [Color(0xFF1E2A7B), Color(0xFF0A0E29)]),
           borderRadius: BorderRadius.circular(12.r),
         ),
-        child: Center(child: Text("Edit Profile", style: AppStyles.pMedium16.copyWith(color: Colors.white))),
+        child: Center(
+            child: Text("Edit Profile",
+                style: AppStyles.pMedium16.copyWith(color: Colors.white))),
       ),
     );
   }

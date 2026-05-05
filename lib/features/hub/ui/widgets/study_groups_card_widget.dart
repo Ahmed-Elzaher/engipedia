@@ -12,7 +12,7 @@ class StudyGroupsCardWidget extends StatelessWidget {
     return Container(
       width: 345.w,
       // الارتفاع متحدد في فيجما بـ 246 تقريباً، بس يفضل نسيبه ياخد مساحته أو نحطه لو التصميم طالب كدا
-      // height: 246.h, 
+      // height: 246.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
         boxShadow: const [
@@ -40,7 +40,8 @@ class StudyGroupsCardWidget extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16.r),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30), // الـ Blur بـ 30px زي ما بعت
+          filter: ImageFilter.blur(
+              sigmaX: 30, sigmaY: 30), // الـ Blur بـ 30px زي ما بعت
           child: Container(
             // 💡 الـ Container الخارجي ده بيمثل الـ Gradient Border
             decoration: BoxDecoration(
@@ -48,10 +49,14 @@ class StudyGroupsCardWidget extends StatelessWidget {
               gradient: const LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Color(0xFFFFFFFF), Color(0xFFD6DAF5)], // Border Image Source
+                colors: [
+                  Color(0xFFFFFFFF),
+                  Color(0xFFD6DAF5)
+                ], // Border Image Source
               ),
             ),
-            padding: const EdgeInsets.all(1), // سُمك البوردر (border-width: 1px)
+            padding:
+                const EdgeInsets.all(1), // سُمك البوردر (border-width: 1px)
             child: Container(
               // 💡 الـ Container الداخلي بيمثل الخلفية والمحتوى
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
@@ -62,7 +67,7 @@ class StudyGroupsCardWidget extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   // ملحوظة: اديت الألوان شفافية 70% عشان تأثير الـ Blur اللي ورا يظهر
                   colors: [
-                    const Color(0xFFFAFAFA).withOpacity(0.7), 
+                    const Color(0xFFFAFAFA).withOpacity(0.7),
                     const Color(0xFFD6DAF5).withOpacity(0.7)
                   ],
                 ),
@@ -71,21 +76,23 @@ class StudyGroupsCardWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.group_outlined, color: const Color(0xFF177064), size: 24.sp),
+                      Icon(Icons.group_outlined,
+                          color: const Color(0xFF177064), size: 24.sp),
                       SizedBox(width: 8.w),
                       Text(
                         "Study Groups",
-                        style: AppStyles.h4Bold20.copyWith(color: const Color(0xFF0A0E29)),
+                        style: AppStyles.h4Bold20
+                            .copyWith(color: const Color(0xFF0A0E29)),
                       ),
                     ],
                   ),
                   SizedBox(height: 24.h),
-
-                  _buildGroupItem(Icons.memory, "Microprocessors", "12 Active Now"),
+                  _buildGroupItem(
+                      Icons.memory, "Microprocessors", "12 Active Now"),
                   SizedBox(height: 20.h),
-                  _buildGroupItem(Icons.functions, "Advanced Calculus II", "5 Active Now"),
+                  _buildGroupItem(
+                      Icons.functions, "Advanced Calculus II", "5 Active Now"),
                   SizedBox(height: 32.h),
-
                   ScaleClickable(
                     onTap: () {},
                     child: Container(

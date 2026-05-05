@@ -13,12 +13,12 @@ class CustomBottomNav extends StatelessWidget {
     required this.onTabSelected,
   });
 
- final List<Map<String, dynamic>> _tabs = const [
-    {'icon': Icons.home_rounded, 'label': 'Home'},         // 0
+  final List<Map<String, dynamic>> _tabs = const [
+    {'icon': Icons.home_rounded, 'label': 'Home'}, // 0
     {'icon': Icons.play_lesson_rounded, 'label': 'Courses'}, // 1
-    {'icon': Icons.auto_awesome_rounded, 'label': 'AI'},      // 2
-    {'icon': Icons.groups_rounded, 'label': 'Hub'},          // 3
-    {'icon': Icons.bar_chart_rounded, 'label': 'Progress'},   // 4
+    {'icon': Icons.auto_awesome_rounded, 'label': 'AI'}, // 2
+    {'icon': Icons.groups_rounded, 'label': 'Hub'}, // 3
+    {'icon': Icons.bar_chart_rounded, 'label': 'Progress'}, // 4
   ];
 
   @override

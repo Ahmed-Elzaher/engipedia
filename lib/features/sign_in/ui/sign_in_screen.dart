@@ -209,7 +209,8 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           SizedBox(height: 12.h),
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, Routes.forgotPasswordScreen),
+            onTap: () =>
+                Navigator.pushNamed(context, Routes.forgotPasswordScreen),
             child: Text(
               "Forget Password",
               style: AppStyles.captionRegularMontserrat.copyWith(

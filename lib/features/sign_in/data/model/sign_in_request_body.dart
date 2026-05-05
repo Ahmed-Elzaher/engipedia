@@ -7,7 +7,7 @@ class SignInRequestBody {
     required this.password,
   });
 
-  // بنكتب الميثود دي بإيدنا عشان نحول الكلاس لـ Map 
+  // بنكتب الميثود دي بإيدنا عشان نحول الكلاس لـ Map
   // لأن Dio بياخد Map ويبعتها للسيرفر كـ JSON
   Map<String, dynamic> toJson() {
     return {

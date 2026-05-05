@@ -23,8 +23,10 @@ class CourseProgressItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
         boxShadow: const [
-          BoxShadow(color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 4),
-          BoxShadow(color: Color(0x121F2687), offset: Offset(0, 8), blurRadius: 32),
+          BoxShadow(
+              color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 4),
+          BoxShadow(
+              color: Color(0x121F2687), offset: Offset(0, 8), blurRadius: 32),
         ],
       ),
       child: ClipRRect(
@@ -62,7 +64,8 @@ class CourseProgressItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: const Center(
-                      child: Icon(Icons.menu_book_rounded, color: Color(0xFF2839A4), size: 30),
+                      child: Icon(Icons.menu_book_rounded,
+                          color: Color(0xFF2839A4), size: 30),
                     ),
                   ),
                   SizedBox(width: 16.w),
@@ -72,13 +75,14 @@ class CourseProgressItem extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       // 💡 الحل هنا: توزيع العناصر آلياً في المساحة المتاحة
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // العنوان
                         Text(
                           title,
                           style: AppStyles.h4Bold20.copyWith(
-                            fontSize: 18.sp, // صغرنا الخط سيكا عشان يفتح مساحة للبروجرس بار
+                            fontSize: 18
+                                .sp, // صغرنا الخط سيكا عشان يفتح مساحة للبروجرس بار
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF0A0E29),
                             height: 1.1,
@@ -92,7 +96,8 @@ class CourseProgressItem extends StatelessWidget {
                           children: [
                             Container(
                               width: double.infinity,
-                              height: 8.h, // قللنا الارتفاع 2 بكسل عشان الـ Overflow
+                              height: 8
+                                  .h, // قللنا الارتفاع 2 بكسل عشان الـ Overflow
                               decoration: BoxDecoration(
                                 color: const Color(0xFFEAEDFA),
                                 borderRadius: BorderRadius.circular(9999),

@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:engipedia/core/widgets/common_app_header.dart';
-import 'package:engipedia/core/widgets/overall_progress_card.dart'; 
+import 'package:engipedia/core/widgets/overall_progress_card.dart';
 import 'package:engipedia/core/widgets/progress_stats_card.dart';
 import 'package:engipedia/core/widgets/learning_activity_card.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,8 @@ class ProgressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true, // 💡 التعديل هنا: يمتد تحت شريط التنقل
-      backgroundColor: AppColors.primary100, // 💡 التعديل هنا: استخدام لونك المفضل للخلفية
+      backgroundColor:
+          AppColors.primary100, // 💡 التعديل هنا: استخدام لونك المفضل للخلفية
       body: SafeArea(
         bottom: false, // 💡 التعديل هنا: إلغاء الـ SafeArea من الأسفل
         child: CustomScrollView(
@@ -57,27 +58,29 @@ class ProgressScreen extends StatelessWidget {
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
                   ScaleClickable(
-                    onTap: () {}, 
+                    onTap: () {},
                     child: const ProgressStatsCard(
                       title: "Courses In Progress",
                       value: "3",
-                      subTitle: "Ongoing", statusText: '',
+                      subTitle: "Ongoing",
+                      statusText: '',
                     ),
                   ),
                   SizedBox(height: 24.h),
                   ScaleClickable(
                     onTap: () {},
                     child: const OverallProgressCard(),
-                  ), 
+                  ),
                   SizedBox(height: 24.h),
                   ScaleClickable(
                     onTap: () {},
                     child: const ProgressStatsCard(
                       title: "Study Streak",
                       value: "15 Days",
-                      subTitle: "Fire!", 
+                      subTitle: "Fire!",
                       icon: Icons.local_fire_department,
-                      iconColor: Color(0xFFF97316), statusText: '',
+                      iconColor: Color(0xFFF97316),
+                      statusText: '',
                     ),
                   ),
                 ]),
@@ -99,17 +102,26 @@ class ProgressScreen extends StatelessWidget {
                 delegate: SliverChildListDelegate([
                   ScaleClickable(
                     onTap: () {},
-                    child: const CourseProgressItem(title: "Computer Architecture", moduleInfo: "Module 12 of 14", progress: 0.85),
+                    child: const CourseProgressItem(
+                        title: "Computer Architecture",
+                        moduleInfo: "Module 12 of 14",
+                        progress: 0.85),
                   ),
                   SizedBox(height: 12.h),
                   ScaleClickable(
                     onTap: () {},
-                    child: const CourseProgressItem(title: "Signal", moduleInfo: "Module 4 of 10", progress: 0.40),
+                    child: const CourseProgressItem(
+                        title: "Signal",
+                        moduleInfo: "Module 4 of 10",
+                        progress: 0.40),
                   ),
                   SizedBox(height: 12.h),
                   ScaleClickable(
                     onTap: () {},
-                    child: const CourseProgressItem(title: "Math 5", moduleInfo: "Module 6 of 10", progress: 0.60),
+                    child: const CourseProgressItem(
+                        title: "Math 5",
+                        moduleInfo: "Module 6 of 10",
+                        progress: 0.60),
                   ),
                 ]),
               ),
@@ -187,7 +199,8 @@ class ProgressScreen extends StatelessWidget {
                   ),
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween, // يمنع الـ Overflow ويوزع العناصر
+                  mainAxisAlignment: MainAxisAlignment
+                      .spaceBetween, // يمنع الـ Overflow ويوزع العناصر
                   children: [
                     // الجزء العلوي: الأيقونة والنصوص الرئيسية
                     Row(
@@ -238,7 +251,8 @@ class ProgressScreen extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontFamily: 'Montserrat',
-                                  fontSize: 18.sp, // صغرناه لضمان عدم وجود Overflow
+                                  fontSize:
+                                      18.sp, // صغرناه لضمان عدم وجود Overflow
                                   fontWeight: FontWeight.w700,
                                   color: const Color(0xFF0A0E29),
                                   height: 1.2,
@@ -254,7 +268,8 @@ class ProgressScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 68.w), // محاذاة مع النص فوق
+                        padding:
+                            EdgeInsets.only(left: 68.w), // محاذاة مع النص فوق
                         child: Text(
                           "Module 12: Exploring L1/L2 Cache optimization strategies.",
                           maxLines: 1,
@@ -281,7 +296,10 @@ class ProgressScreen extends StatelessWidget {
                           colors: [Color(0xFF1E2A7B), Color(0xFF0A0E29)],
                         ),
                         boxShadow: const [
-                          BoxShadow(color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 4),
+                          BoxShadow(
+                              color: Color(0x40000000),
+                              offset: Offset(0, 4),
+                              blurRadius: 4),
                         ],
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(12.r),

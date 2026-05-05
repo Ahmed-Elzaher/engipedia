@@ -29,7 +29,9 @@ class EnrolledCoursesWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Enrolled Courses", style: AppStyles.h4Bold20.copyWith(color: const Color(0xFF0A0E29))),
+          Text("Enrolled Courses",
+              style:
+                  AppStyles.h4Bold20.copyWith(color: const Color(0xFF0A0E29))),
           SizedBox(height: 20.h),
           // بننادي على الدالة اللي بتبني كل سطر كورس
           _buildCourseProgress("Computer Architecture", 0.75),
@@ -49,8 +51,12 @@ class EnrolledCoursesWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(name, style: AppStyles.pMedium16.copyWith(fontSize: 14.sp, color: const Color(0xFF0A0E29))),
-            Text("${(progress * 100).toInt()}%", style: AppStyles.pMedium16.copyWith(fontSize: 14.sp, color: const Color(0xFF0A0E29))),
+            Text(name,
+                style: AppStyles.pMedium16
+                    .copyWith(fontSize: 14.sp, color: const Color(0xFF0A0E29))),
+            Text("${(progress * 100).toInt()}%",
+                style: AppStyles.pMedium16
+                    .copyWith(fontSize: 14.sp, color: const Color(0xFF0A0E29))),
           ],
         ),
         SizedBox(height: 8.h),

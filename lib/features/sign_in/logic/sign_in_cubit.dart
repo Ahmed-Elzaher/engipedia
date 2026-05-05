@@ -14,9 +14,9 @@ class SignInCubit extends Cubit<SignInState> {
   TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-void emitSignInStates() async {
+  void emitSignInStates() async {
     emit(const SignInLoading());
-    
+
     try {
       final response = await _signInRepo.login(
         SignInRequestBody(
@@ -31,6 +31,7 @@ void emitSignInStates() async {
       emit(SignInError(error: error.toString()));
     }
   }
+
   @override
   Future<void> close() {
     emailController.dispose();

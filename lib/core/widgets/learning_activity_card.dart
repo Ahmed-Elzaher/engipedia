@@ -9,7 +9,15 @@ class LearningActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // 💡 نسب الارتفاعات بدل الأرقام الثابتة عشان تبقى مرنة (Max height = 116)
-    final List<double> barHeightRatios = [49/116, 79/116, 104/116, 37/116, 67/116, 116/116, 24/116];
+    final List<double> barHeightRatios = [
+      49 / 116,
+      79 / 116,
+      104 / 116,
+      37 / 116,
+      67 / 116,
+      116 / 116,
+      24 / 116
+    ];
     final List<String> days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
     return Container(
@@ -18,7 +26,8 @@ class LearningActivityCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
         boxShadow: const [
-          BoxShadow(color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 4),
+          BoxShadow(
+              color: Color(0x40000000), offset: Offset(0, 4), blurRadius: 4),
         ],
       ),
       child: ClipRRect(
@@ -36,7 +45,8 @@ class LearningActivityCard extends StatelessWidget {
             ),
             padding: const EdgeInsets.all(1),
             child: Container(
-              padding: EdgeInsets.all(16.w), // 💡 زودنا البادينج الداخلي شوية عشان يلم المحتوى
+              padding: EdgeInsets.all(
+                  16.w), // 💡 زودنا البادينج الداخلي شوية عشان يلم المحتوى
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7.r),
                 gradient: const LinearGradient(
@@ -47,11 +57,13 @@ class LearningActivityCard extends StatelessWidget {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min, // 💡 يخلي الكارت يأخذ مساحة المحتوى بس
+                mainAxisSize:
+                    MainAxisSize.min, // 💡 يخلي الكارت يأخذ مساحة المحتوى بس
                 children: [
                   // 1. العنوان
                   Padding(
-                    padding: EdgeInsets.only(bottom: 24.h), // 💡 قللنا المسافة شوية
+                    padding:
+                        EdgeInsets.only(bottom: 24.h), // 💡 قللنا المسافة شوية
                     child: Text(
                       "Learning Activity",
                       style: AppStyles.h4Bold20.copyWith(
@@ -65,72 +77,79 @@ class LearningActivityCard extends StatelessWidget {
                   // 2. منطقة الشارت
                   SizedBox(
                     height: 120.h, // 💡 ارتفاع ثابت ومعقول لمنطقة الشارت
-                    child: LayoutBuilder(
-                      builder: (context, constraints) {
-                        return Column(
-                          children: [
-                            // منطقة الأعمدة والخطوط
-                            Expanded(
-                              child: Stack(
-                                children: [
-                                  // خطوط الشبكة
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: List.generate(4, (index) => Container(
-                                      width: double.infinity,
-                                      height: 1.h,
-                                      color: const Color(0xFF0A0E29).withOpacity(0.15),
-                                    )),
-                                  ),
-                                  // الأعمدة
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween, // 💡 بتوزع المسافات بالتساوي
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: List.generate(7, (index) {
-                                      // 💡 حساب عرض العمود بشكل مرن بناءً على مساحة الشاشة المتاحة
-                                      double barWidth = (constraints.maxWidth - (6 * 8.w)) / 7; 
-                                      // منع العمود إنه يكون رفيع أو تخين بزيادة
-                                      barWidth = barWidth.clamp(20.w, 35.w); 
+                    child: LayoutBuilder(builder: (context, constraints) {
+                      return Column(
+                        children: [
+                          // منطقة الأعمدة والخطوط
+                          Expanded(
+                            child: Stack(
+                              children: [
+                                // خطوط الشبكة
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: List.generate(
+                                      4,
+                                      (index) => Container(
+                                            width: double.infinity,
+                                            height: 1.h,
+                                            color: const Color(0xFF0A0E29)
+                                                .withOpacity(0.15),
+                                          )),
+                                ),
+                                // الأعمدة
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment
+                                      .spaceBetween, // 💡 بتوزع المسافات بالتساوي
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: List.generate(7, (index) {
+                                    // 💡 حساب عرض العمود بشكل مرن بناءً على مساحة الشاشة المتاحة
+                                    double barWidth =
+                                        (constraints.maxWidth - (6 * 8.w)) / 7;
+                                    // منع العمود إنه يكون رفيع أو تخين بزيادة
+                                    barWidth = barWidth.clamp(20.w, 35.w);
 
-                                      return _buildBar(
-                                        heightRatio: barHeightRatios[index],
-                                        width: barWidth,
-                                        maxHeight: constraints.maxHeight - 20.h, // 💡 حجز مساحة لأسماء الأيام
-                                      );
-                                    }),
-                                  ),
-                                ],
-                              ),
+                                    return _buildBar(
+                                      heightRatio: barHeightRatios[index],
+                                      width: barWidth,
+                                      maxHeight: constraints.maxHeight -
+                                          20.h, // 💡 حجز مساحة لأسماء الأيام
+                                    );
+                                  }),
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 8.h),
-                            // أيام الأسبوع
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: days.map((day) {
-                                // 💡 نفس عرض العمود عشان يبقوا متسنترين صح
-                                double barWidth = (constraints.maxWidth - (6 * 8.w)) / 7;
-                                barWidth = barWidth.clamp(20.w, 35.w);
-                                return SizedBox(
-                                  width: barWidth,
-                                  child: Center(
-                                    child: Text(
-                                      day,
-                                      style: TextStyle(
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 12.sp, // 💡 صغرنا الخط سيكا لمنع الـ Overflow
-                                        fontStyle: FontStyle.italic,
-                                        color: const Color(0xFF141C52),
-                                      ),
+                          ),
+                          SizedBox(height: 8.h),
+                          // أيام الأسبوع
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: days.map((day) {
+                              // 💡 نفس عرض العمود عشان يبقوا متسنترين صح
+                              double barWidth =
+                                  (constraints.maxWidth - (6 * 8.w)) / 7;
+                              barWidth = barWidth.clamp(20.w, 35.w);
+                              return SizedBox(
+                                width: barWidth,
+                                child: Center(
+                                  child: Text(
+                                    day,
+                                    style: TextStyle(
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12
+                                          .sp, // 💡 صغرنا الخط سيكا لمنع الـ Overflow
+                                      fontStyle: FontStyle.italic,
+                                      color: const Color(0xFF141C52),
                                     ),
                                   ),
-                                );
-                              }).toList(),
-                            ),
-                          ],
-                        );
-                      }
-                    ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ],
+                      );
+                    }),
                   ),
 
                   // 3. الفوتر: Time Spent
@@ -138,7 +157,9 @@ class LearningActivityCard extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.only(top: 16.h),
                     decoration: BoxDecoration(
-                      border: Border(top: BorderSide(color: Colors.white.withOpacity(0.4))),
+                      border: Border(
+                          top:
+                              BorderSide(color: Colors.white.withOpacity(0.4))),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,7 +174,8 @@ class LearningActivityCard extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(12.r),
                               ),
                               child: Center(
-                                child: Icon(Icons.access_time_rounded, color: const Color(0xFF2563EB), size: 20.w),
+                                child: Icon(Icons.access_time_rounded,
+                                    color: const Color(0xFF2563EB), size: 20.w),
                               ),
                             ),
                             SizedBox(width: 12.w),
@@ -188,14 +210,18 @@ class LearningActivityCard extends StatelessWidget {
   }
 
   // العمود بقى بيحسب ارتفاعه وعرضه ديناميكياً
-  Widget _buildBar({required double heightRatio, required double width, required double maxHeight}) {
+  Widget _buildBar(
+      {required double heightRatio,
+      required double width,
+      required double maxHeight}) {
     return Container(
       width: width,
       height: maxHeight * heightRatio, // 💡 بيأخذ نسبته من المساحة المتاحة
       decoration: BoxDecoration(
         color: const Color(0xFF2839A4),
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12.r), // 💡 قللنا הـ Radius ليتناسب مع العرض المرن
+          topLeft: Radius.circular(
+              12.r), // 💡 قللنا הـ Radius ليتناسب مع العرض المرن
           topRight: Radius.circular(12.r),
         ),
       ),

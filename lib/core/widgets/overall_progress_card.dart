@@ -66,7 +66,8 @@ class OverallProgressCard extends StatelessWidget {
                         value: 0.78,
                         strokeWidth: 6,
                         color: const Color(0xFF2839A4),
-                        backgroundColor: const Color(0xFF2839A4).withOpacity(0.1),
+                        backgroundColor:
+                            const Color(0xFF2839A4).withOpacity(0.1),
                         strokeCap: StrokeCap.round,
                       ),
                     ),

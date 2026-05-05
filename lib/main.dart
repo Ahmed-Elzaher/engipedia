@@ -4,15 +4,15 @@ import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/utils/app_colors.dart';
 // 💡 السطر ده ضروري عشان يشوف الـ setupGetIt
-import 'core/di/dependency_injection.dart'; 
+import 'core/di/dependency_injection.dart';
 
 void main() async {
   // لضمان استقرار كل الـ Plugins قبل تشغيل الأبلكيشن
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // ✅ السطر ده أهم سطر حالياً: بيجهز كل الـ Services والـ Repos قبل ما الـ UI يفتح
-  await setupGetIt(); 
-  
+  await setupGetIt();
+
   runApp(const EngipediaApp());
 }
 
@@ -33,7 +33,7 @@ class EngipediaApp extends StatelessWidget {
           // تفعيل الـ Theme عشان تريح نفسك في الألوان
           theme: ThemeData(
             primaryColor: AppColors.primary700,
-            scaffoldBackgroundColor: Colors.white, 
+            scaffoldBackgroundColor: Colors.white,
           ),
           initialRoute: Routes.start_screen,
           onGenerateRoute: AppRouter().generateRoute,

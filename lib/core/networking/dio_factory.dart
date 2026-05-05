@@ -19,7 +19,7 @@ class DioFactory {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         };
-      
+
       addDioInterceptor();
     }
     return dio!;
