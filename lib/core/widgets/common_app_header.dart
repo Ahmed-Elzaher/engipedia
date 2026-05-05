@@ -4,8 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/scale_clickable.dart';
-// 💡 لازم تعمل Import لصفحة البروفايل هنا لما تكريتها
-// import '../../../../features/profile/ui/screens/profile_screen.dart'; 
 
 class CommonAppHeader extends SliverPersistentHeaderDelegate {
   final String userName;
@@ -15,15 +13,12 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
   String getInitials(String name) {
     List<String> nameParts = name.split(" ");
     String initials = "";
-    
     if (nameParts.isNotEmpty && nameParts[0].isNotEmpty) {
       initials += nameParts[0][0].toUpperCase();
     }
-    
     if (nameParts.length > 1 && nameParts[1].isNotEmpty) {
       initials += nameParts[1][0].toUpperCase();
     }
-    
     return initials.isEmpty ? "U" : initials;
   }
 
@@ -46,24 +41,20 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
       ),
       alignment: Alignment.center,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center, // محاذاة مركزية لكل العناصر
         children: [
-          // 💡 غلفنا الجزء بتاع الصورة والبيانات بـ GestureDetector عشان يفتح البروفايل
           Expanded(
             child: GestureDetector(
               onTap: () {
-                // 💡 هنا كود الـ Navigation لصفحة البروفايل
-              
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const ProfileScreen()),
                 );
-                
-                print("Profile Clicked!"); // للتيست مؤقتاً
               },
-              behavior: HitTestBehavior.opaque, // عشان الدوسة تشتغل على المساحة الفاضية كمان
+              behavior: HitTestBehavior.opaque,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // 1. بروفايل Placeholder ديناميكي
                   Container(
                     width: 40.w,
                     height: 40.w,
@@ -83,8 +74,6 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
                     ),
                   ),
                   SizedBox(width: 14.w),
-
-                  // 2. منطقة البيانات
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -124,22 +113,40 @@ class CommonAppHeader extends SliverPersistentHeaderDelegate {
             ),
           ),
 
-          // 3. أيقونات التفاعل
+          // 💡 تعديل المحاذاة والارتفاع بالملي
           Row(
-            mainAxisSize: MainAxisSize.min, // عشان مياخدش مساحة أكتر من حجمه
+            mainAxisSize: MainAxisSize.min,
             children: [
-              ScaleClickable(
+              _buildIconWrapper(
+                icon: Icons.notifications_none_rounded,
+                size: 26.w,
                 onTap: () {},
-                child: const Icon(Icons.notifications_none_rounded, color: Color(0xFF1349EC), size: 22),
               ),
-              SizedBox(width: 16.w),
-              ScaleClickable(
+              SizedBox(width: 12.w),
+              _buildIconWrapper(
+                icon: Icons.chat_bubble_outline_rounded,
+                size: 23.w, // حجم أصغر شعرة للتعادل بصرياً مع الجرس
                 onTap: () {},
-                child: const Icon(Icons.grid_view_rounded, color: Color(0xFF1349EC), size: 22),
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  // 🛠️ دالة مساعدة لضمان التمركز المطلق للأيقونات
+  Widget _buildIconWrapper({required IconData icon, required double size, required VoidCallback onTap}) {
+    return ScaleClickable(
+      onTap: onTap,
+      child: Container(
+        height: 40.h, // ثبتنا الارتفاع تماماً
+        alignment: Alignment.center, // تمركز الأيقونة داخل الـ 40 بكسل
+        child: Icon(
+          icon,
+          color: const Color(0xFF1349EC),
+          size: size,
+        ),
       ),
     );
   }

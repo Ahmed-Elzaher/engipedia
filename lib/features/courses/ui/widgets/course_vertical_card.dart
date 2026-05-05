@@ -9,6 +9,7 @@ class CourseVerticalCard extends StatelessWidget {
   final String doctor;
   final String level;
   final String lectures;
+  final VoidCallback onTap; // 💡 ضفنا المتغير ده عشان يستقبل الأكشن من بره
 
   const CourseVerticalCard({
     super.key,
@@ -16,12 +17,13 @@ class CourseVerticalCard extends StatelessWidget {
     required this.doctor,
     required this.level,
     required this.lectures,
+    required this.onTap, // 💡 وطلبناه هنا في الكونسراكتور
   });
 
   @override
   Widget build(BuildContext context) {
     return ScaleClickable(
-      onTap: () {}, // اذهب لتفاصيل الكورس
+      onTap: onTap, // 💡 ربطنا الضغطة بالأكشن اللي هتبعته من صفحة الكورسات
       child: Container(
         height: 211.h,
         margin: EdgeInsets.only(bottom: 20.h),
@@ -40,8 +42,8 @@ class CourseVerticalCard extends StatelessWidget {
             filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
             child: Container(
               padding: EdgeInsets.all(16.w),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [Color(0xFFFAFAFA), Color(0xFFD6DAF5)],

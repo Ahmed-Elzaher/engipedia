@@ -26,6 +26,8 @@ dependencies:
   pinput: ^6.0.2
   get_it: ^9.2.1
   pretty_dio_logger: ^1.4.0
+  video_player: ^2.11.1
+  chewie: ^1.13.1
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +52,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svgs/
+    - assets/videos/
 
   fonts:
     - family: Montserrat

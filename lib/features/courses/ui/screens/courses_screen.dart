@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/scale_clickable.dart';
+import '../../../../core/routing/routes.dart'; // ضفنا مسار الـ Routes هنا
 import '../widgets/courses_search_field.dart';
 import '../widgets/course_vertical_card.dart';
 
@@ -13,10 +14,10 @@ class CoursesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true, // 💡 التعديل الأول: يمتد تحت شريط التنقل
-      backgroundColor: AppColors.primary100, // 💡 التعديل الثاني: استخدام لونك المفضل للخلفية
+      extendBody: true, 
+      backgroundColor: AppColors.primary100, 
       body: SafeArea(
-        bottom: false, // 💡 التعديل الثالث: إلغاء الحماية السفلية عشان ينزل ورا البار
+        bottom: false, 
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
@@ -47,38 +48,59 @@ class CoursesScreen extends StatelessWidget {
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               sliver: SliverToBoxAdapter(
-                child: _buildFeaturedCard(),
+                child: _buildFeaturedCard(context), // مررنا الـ context هنا
               ),
             ),
 
             // 4. قائمة الكورسات الطولية
             SliverPadding(
-              padding: EdgeInsets.fromLTRB(24.w, 32.h, 24.w, 0), // شيلنا الـ 120 من هنا عشان حطيناها تحت خالص
+              padding: EdgeInsets.fromLTRB(24.w, 32.h, 24.w, 0), 
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
-                  const CourseVerticalCard(
+                  CourseVerticalCard(
                     title: "Database Systems",
                     doctor: "Dr. Nalha Beshri",
                     level: "200",
                     lectures: "10 Lecs",
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        Routes.courseDetailsScreen,
+                        arguments: "Database Systems",
+                      );
+                    },
                   ),
-                  const CourseVerticalCard(
+                  CourseVerticalCard(
                     title: "Computer Network",
                     doctor: "Dr. Mohamed Sabry Saraya",
                     level: "200",
                     lectures: "10 Lecs",
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        Routes.courseDetailsScreen,
+                        arguments: "Computer Network",
+                      );
+                    },
                   ),
-                  const CourseVerticalCard(
+                  CourseVerticalCard(
                     title: "PLC",
                     doctor: "Dr. Mahmoud Moawad",
                     level: "400",
                     lectures: "12 Lecs",
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        Routes.courseDetailsScreen,
+                        arguments: "PLC",
+                      );
+                    },
                   ),
                 ]),
               ),
             ),
 
-            // 💡 التعديل الرابع: مسافة أسفل المحتوى لمنع اختفائه خلف الـ BottomNav العائم
+            // مسافة أسفل المحتوى لمنع اختفائه خلف الـ BottomNav العائم
             SliverToBoxAdapter(child: SizedBox(height: 140.h)),
           ],
         ),
@@ -142,7 +164,7 @@ class CoursesScreen extends StatelessWidget {
   }
 
   // الكارت الكبير (Featured Course)
-  Widget _buildFeaturedCard() {
+  Widget _buildFeaturedCard(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(20.w),
@@ -173,7 +195,7 @@ class CoursesScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 24.h),
-          _buildFeaturedButton(),
+          _buildFeaturedButton(context), // مررنا الـ context للزرار
           SizedBox(height: 20.h),
           Row(
             children: [
@@ -193,9 +215,15 @@ class CoursesScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFeaturedButton() {
+  Widget _buildFeaturedButton(BuildContext context) {
     return ScaleClickable(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          Routes.courseDetailsScreen,
+          arguments: "Embedded Systems",
+        );
+      },
       child: Container(
         height: 52.h,
         width: double.infinity,

@@ -1,5 +1,5 @@
-import 'package:engipedia/features/sign%20in/data/sign_in_repo.dart';
-import 'package:engipedia/features/sign%20in/logic/sign_in_cubit.dart';
+import 'package:engipedia/features/sign_in/data/sign_in_repo.dart';
+import 'package:engipedia/features/sign_in/logic/sign_in_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 import '../networking/dio_factory.dart';

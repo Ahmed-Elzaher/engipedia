@@ -1,5 +1,5 @@
 import '../../../../core/networking/api_service.dart';
-import '../data/model/sign_in_request_body.dart';
+import 'model/sign_in_request_body.dart';
 
 class SignInRepo {
   final ApiService _apiService;

@@ -8,6 +8,7 @@ abstract class Routes {
   static const String checkEmailScreen = '/check_email_screen';
   static const String homeScreen = '/homeScreen';
   static const String coursesScreen = '/coursesScreen';
+  static const String courseDetailsScreen = '/courseDetailsScreen';
   static const String progressScreen = '/progressScreen';
   static const String hubScreen = '/hubScreen';
   static const String profileScreen = '/profileScreen';

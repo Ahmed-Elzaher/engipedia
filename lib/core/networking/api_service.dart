@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:engipedia/features/sign%20in/data/model/sign_in_request_body.dart';
+import 'package:engipedia/features/sign_in/data/model/sign_in_request_body.dart';
 import 'api_constants.dart';
 
 class ApiService {
